@@ -7,6 +7,8 @@ require("dotenv").config();
 
 const dbHelper = require("./dbHelper.js");
 
+const contactMeRoutes = require("./routes/contactMe");
+
 const app = express();
 
 app.use(cors());
@@ -14,10 +16,12 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join("client")));
 
+app.use("/backend/contactMe/", contactMeRoutes);
+
 app.use((req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "index.html"));
+ res.sendFile(path.resolve(__dirname, "client", "index.html"));
 });
 
 dbHelper.connectToServer(function () {
-  app.listen(process.env.PORT);
+ app.listen(process.env.PORT);
 });
