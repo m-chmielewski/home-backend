@@ -19,7 +19,7 @@ router.post("", (req, res, next) => {
    from: process.env.MAIL_USER,
    to: "m@mchm.pl",
    subject: req.body.subject,
-   text: `From: ${req.body.from}\n\n${req.body.body}`,
+   text: `From: ${req.body.from}\n\n${req.body.messageBody}`,
   })
   .then(() => res.json())
   .catch(error => next(error));
